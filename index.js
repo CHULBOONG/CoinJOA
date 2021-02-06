@@ -51,7 +51,7 @@ app.use('/comments', util.getPostQueryString, require('./routes/comments'));
 app.use('/files', require('./routes/files'));
 
 // Port setting
-var port = 3000;
-app.listen(port, function(){
-  console.log('구동 완료 http://localhost:'+port);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, function(){
+  console.log('구동 완료 http://localhost:'+PORT);
 });

@@ -4,6 +4,7 @@
   "description": "코인조아 가상의 모의투자 사이트\r <br>",
   "main": "index.js",
   "scripts": {
+  "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
