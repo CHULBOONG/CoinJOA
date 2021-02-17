@@ -3,6 +3,9 @@
 
 https://coinjoa.herokuapp.com/
 
+# 목적
+node.js 공부와 웹 입문 수준의 역량, 협업의 기초를 기르기 위함
+
 # 개인용 환경 구축방법
   *MongoDB 가입, Cluster와 DB생성, ip와 관리자 아이디설정 후 
 
@@ -15,10 +18,12 @@ https://coinjoa.herokuapp.com/
     489912810266-ffk6n0b5ldnlbn7mvllg06d30mltbrg3.apps.googleusercontent.com
 
     9H0rtg4B2_bc5gR-HEKeGPB9
+       
+       여기 있는건 전부 내가 썼던 예시로 적은것이고 직접 key를 만들어서 쓰세요.
   그 후 $npm install 하십시오
   
 # 구조 설명
-**config** - Express의 인증 미들웨어인 Passport.js가 들어있다. 여기서구글로그인 구현 중   
+**config** - Express의 인증 미들웨어인 Passport.js가 들어있다. 여기서구글로그인 구현 중  
    
 **models** - mongoose.Schema로 db에 저장되는 table 형식들이 모여있음   
    
@@ -38,10 +43,10 @@ https://coinjoa.herokuapp.com/
 
 >실행시 app.set('view engine', 'ejs'); 필요하다.   
 
-**index.js** - 제일중요하다 모든 세팅과 실행을 해줌   
+**index.js** - 제일중요하다 기본 세팅과 실행 담당 
    
-**package.json** - 의존성 알려줌 npm 설치할때마다 --save 하면 자동으로 적힘 웹에 올릴때 참고되는 파일   
+**package.json** - 의존성 알려줌 npm 설치할때마다 --save 하면 자동으로 적힘(강력추천) 웹에 올릴때 의존성 이거보고 파악함   
    
-**package-lock** - 개발자 시점에서 적힌 구체적인 의존성 모음 툴이라고 해야하나 npm install하면 알아서 생기더라   
+**package-lock** - 개발자 시점에서 적힌 구체적인 의존성 모음 툴이라고 해야하나 npm install하면 알아서 생긴다. package.json이 있음에도 개발환경이 미세하게 차이나는 경우를 해결해줌   
    
 **util.js** - 잡다한 기능   
