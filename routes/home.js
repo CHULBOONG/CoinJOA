@@ -16,6 +16,18 @@ router.get('/coin', function(req, res){
 });
 
 
+router.get('/google',
+  passport.authenticate('google', { scope: ['profile'] })
+);
+
+router.get('/google/callback',
+  passport.authenticate('google'), authSuccess
+);
+
+function authSuccess(req, res) {
+  res.redirect('/');
+}
+
 // Login
 router.get('/login', function (req,res) {
   var username = req.flash('username')[0];

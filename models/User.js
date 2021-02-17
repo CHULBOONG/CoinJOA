@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-
+// userSchema 추가하는 곳
 // schema
 var userSchema = mongoose.Schema({
   username:{
@@ -14,6 +14,10 @@ var userSchema = mongoose.Schema({
     type:String,
     required:[true,'Password is required!'],
     select:false
+  },
+   googleId:{
+    type:String,
+    trim:true
   },
   name:{
     type:String,

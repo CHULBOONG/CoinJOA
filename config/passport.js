@@ -1,5 +1,6 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy   = require('passport-google-oauth2').Strategy;
 var User = require('../models/User');
 
 // serialize & deserialize User
@@ -11,6 +12,35 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
+
+//Google login
+passport.use(new GoogleStrategy(
+  {
+    clientID      : process.env.GOOGLE_CLIENT_ID,
+    clientSecret  : process.env.GOOGLE_SECRET,
+    callbackURL   : '/auth/google/callback',
+    passReqToCallback   : true
+  }, function(request, accessToken, refreshToken, profile, done){
+    console.log('profile: ', profile);
+    //var user = profile;
+    User.findOne({googleId: profile.id}, function (err, user)  {
+    if(user){
+        return done(null, user);
+    }
+    else {
+        var newUser={
+           username: profile.id,
+           password: "asdf1234"/* PASSWORD_NOT_REQUIRED_FOR_GOOGLE_LOGIN */ ,
+           googleId: profile.id,
+           name: profile.displayName
+        };
+        User.create(newUser, function (err, user) {
+          return done(null, user);
+        });
+    }
+})
+}
+));
 
 // local strategy
 passport.use('local-login',

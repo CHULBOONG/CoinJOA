@@ -49,6 +49,7 @@ app.use('/posts', util.getPostQueryString, require('./routes/posts'));
 app.use('/users', require('./routes/users'));
 app.use('/comments', util.getPostQueryString, require('./routes/comments'));
 app.use('/files', require('./routes/files'));
+app.use('/auth', require('./routes/auth'));
 
 // Port setting
 const PORT = process.env.PORT || 3000;
