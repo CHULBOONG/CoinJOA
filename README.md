@@ -18,12 +18,12 @@ https://coinjoa.herokuapp.com/
   그 후 $npm install 하십시오
   
 # 구조 설명
-config - Express의 인증 미들웨어인 Passport.js가 들어있다. 구글로그인 구현 중   
-models - mongoose.Schema로 db에 저장되는 table 형식들이 모여있음   
-public - css js 모아놓은곳   
-routes - router.get으로 라우팅하는곳임 요청에 응답하는 방식을 알려줌   
-views - ejs로 작성된 말그대로 페이지 뷰, html이랑 문법이 디게 비슷한데 <% %>같은 걸 쓰는 문법형식을 따른다.   
-*<ejs 문법>   
+*config* - Express의 인증 미들웨어인 Passport.js가 들어있다. 구글로그인 구현 중   
+*models* - mongoose.Schema로 db에 저장되는 table 형식들이 모여있음   
+*public* - css js 모아놓은곳   
+*routes* - router.get으로 라우팅하는곳임 요청에 응답하는 방식을 알려줌   
+*views* - ejs로 작성된 말그대로 페이지 뷰, html이랑 문법이 디게 비슷한데 <% %>같은 걸 쓰는 문법형식을 따른다.   
+*<ejs 문법>*   
 주석 : <%# ... %>   
 JS 코드 : <% ... %>   
 변수 출력(html escape 처리: >를 $gt로 변환) : <%= ... %>   
@@ -33,7 +33,7 @@ html escape안하고 변수 출력 : <%- ... %>
 
 실행시 app.set('view engine', 'ejs'); 필요하다.   
 
-index.js - 제일중요하다 모든 세팅과 실행을 해줌   
-package.json - 의존성 알려줌 npm 설치할때마다 --save 하면 자동으로 적힘 웹에 올릴때 참고되는 파일   
-package-lock - 개발자 시점에서 적힌 구체적인 의존성 모음 툴이라고 해야하나 npm install하면 알아서 생기더라   
-util.js - 잡다한 기능   
+*index.js* - 제일중요하다 모든 세팅과 실행을 해줌   
+*package.json* - 의존성 알려줌 npm 설치할때마다 --save 하면 자동으로 적힘 웹에 올릴때 참고되는 파일   
+*package-lock* - 개발자 시점에서 적힌 구체적인 의존성 모음 툴이라고 해야하나 npm install하면 알아서 생기더라   
+*util.js* - 잡다한 기능   
