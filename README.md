@@ -8,11 +8,13 @@ https://coinjoa.herokuapp.com/
 
   시스템 환경변수에 MONGO_DB 로 추가
 
-  mongodb+srv://alscjf9751:alscjfrhtn1!@cluster0.w8bvr.mongodb.net/test?retryWrites=true&w=majority
+    mongodb+srv://alscjf9751:alscjfrhtn1!@cluster0.w8bvr.mongodb.net/test?retryWrites=true&w=majority
 
   마찬가지로 GOOGLE_CLIENT_ID, GOOGLE_SECRET 추가
-   489912810266-ffk6n0b5ldnlbn7mvllg06d30mltbrg3.apps.googleusercontent.com
-   9H0rtg4B2_bc5gR-HEKeGPB9
+
+    489912810266-ffk6n0b5ldnlbn7mvllg06d30mltbrg3.apps.googleusercontent.com
+
+    9H0rtg4B2_bc5gR-HEKeGPB9
   그 후 $npm install 하십시오
   
 # 구조 설명
