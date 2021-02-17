@@ -19,6 +19,13 @@ var userSchema = mongoose.Schema({
     type:String,
     trim:true
   },
+   asset:{
+    type:Number,
+    required:[true,'초기 자금을 입력해주세요!(최대 100만원)'],
+    match:[/^.{0,1000000}$/,'0~100만원까지 입력 가능합니다'],
+    trim:true,
+    min: 0
+  },
   name:{
     type:String,
     required:[true,'Name is required!'],
@@ -34,7 +41,7 @@ var userSchema = mongoose.Schema({
   toObject:{virtuals:true}
 });
 
-// virtuals
+// virtuals db에 저장안되고 비교만 하고 사라지는거
 userSchema.virtual('passwordConfirmation')
   .get(function(){ return this._passwordConfirmation; })
   .set(function(value){ this._passwordConfirmation=value; });

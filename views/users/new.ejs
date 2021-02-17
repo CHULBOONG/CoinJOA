@@ -57,6 +57,16 @@
             <% } %>
           </div>
         </div>
+
+        <div class="form-group row">
+          <label for="username" class="col-sm-3 col-form-label">초기자금(0~100만원)*</label>
+          <div class="col-sm-9">
+            <input type="text" id="asset" name="asset" value="<%= user.asset %>" class="form-control <%= (errors.asset)?'is-invalid':'' %>">
+            <% if(errors.asset){ %>
+              <span class="invalid-feedback"><%= errors.asset.message %></span>
+            <% } %>
+          </div>
+        </div>
         <p>
           <small>*필수사항</small>
         </p>

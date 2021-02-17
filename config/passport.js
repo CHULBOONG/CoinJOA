@@ -32,6 +32,7 @@ passport.use(new GoogleStrategy(
            username: profile.id,
            password: "asdf1234"/* PASSWORD_NOT_REQUIRED_FOR_GOOGLE_LOGIN */ ,
            googleId: profile.id,
+           asset: '1000000',
            name: profile.displayName
         };
         User.create(newUser, function (err, user) {
