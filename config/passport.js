@@ -1,4 +1,5 @@
 var passport = require('passport');
+var bcrypt = require('bcryptjs'); // bcryptjs pacakge를 bcrypt 변수에 담음
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy   = require('passport-google-oauth2').Strategy;
 var User = require('../models/User');
@@ -30,7 +31,7 @@ passport.use(new GoogleStrategy(
     else {
         var newUser={
            username: profile.id,
-           password: "asdf1234"/* PASSWORD_NOT_REQUIRED_FOR_GOOGLE_LOGIN */ ,
+           password: 'asdf1234' /* 구글 로그인은 비번안받음 수정 필요 */ ,
            googleId: profile.id,
            asset: '1000000',
            name: profile.displayName
