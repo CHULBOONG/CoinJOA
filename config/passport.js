@@ -31,7 +31,7 @@ passport.use(new GoogleStrategy(
     else {
         var newUser={
            username: profile.id,
-           password: 'asdf1234' /* 구글 로그인은 비번안받음 수정 필요 */ ,
+           password: /* 구글 로그인은 비번안받음 수정 필요 */ ,
            googleId: profile.id,
            asset: '1000000',
            name: profile.displayName
