@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('../config/passport');
+var fs = require('fs');
 
 // Home
 router.get('/', function(req, res){
@@ -11,8 +12,13 @@ router.get('/about', function(req, res){
 });
 
 //Coin 그래프
+var text = fs.readFileSync('views/home/data.json');
+// console.log(text);
+
 router.get('/coin', function(req, res){
-  res.render('home/coin');
+
+  res.render('home/coin',{data: text});
+
 });
 
 
