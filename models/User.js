@@ -1,18 +1,19 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
+
 // userSchema 추가하는 곳
 // schema
 var userSchema = mongoose.Schema({
   username:{
     type:String,
     required:[true,'Username is required!'],
-    match:[/^.{4,12}$/,'Should be 4-12 characters!'],
+    //match:[/^.{1,12}$/,'Should be 1-12 characters!'],
     trim:true,
     unique:true
   },
   password:{
     type:String,
-    required:[true,'Password is required!'],
+    required:[false,'Password is required!'],
     select:false
   },
    googleId:{
@@ -21,20 +22,19 @@ var userSchema = mongoose.Schema({
   },
    asset:{
     type:Number,
-    required:[true,'초기 자금을 입력해주세요!(최대 100만원)'],
+    required:[false,'초기 자금을 입력해주세요!(최대 100만원)'],
     match:[/^.{0,1000000}$/,'0~100만원까지 입력 가능합니다'],
     trim:true,
-    min: 0
   },
   name:{
     type:String,
     required:[true,'Name is required!'],
-    match:[/^.{4,12}$/,'Should be 4-12 characters!'],
+    //match:[/^.{1,12}$/,'Should be 1-12 characters!'],
     trim:true
   },
   email:{
     type:String,
-    match:[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,'Should be a vaild email address!'],
+    //match:[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,'Should be a vaild email address!'],
     trim:true
   }
 },{
@@ -59,8 +59,11 @@ userSchema.virtual('newPassword')
   .set(function(value){ this._newPassword=value; });
 
 // password validation
-var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
-var passwordRegexErrorMessage = 'Should be minimum 8 characters of alphabet and number combination!';
+
+//var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{0,16}$/;
+//var passwordRegexErrorMessage = 'Should be minimum 8 characters of alphabet and number combination!';
+
+if(!userSchema.path('password')){ // local 시작
 userSchema.path('password').validate(function(v) {
   var user = this;
 
@@ -95,7 +98,7 @@ userSchema.path('password').validate(function(v) {
     }
   }
 });
-
+} // local 끝
 // hash password
 userSchema.pre('save', function (next){
   var user = this;
