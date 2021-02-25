@@ -22,6 +22,11 @@ router.get('/coin', function(req, res){
 });
 
 
+router.get('/asset', function(req, res){
+  res.render('home/asset');
+
+});
+
 router.get('/google',
   passport.authenticate('google', { scope: ['profile'] })
 );
