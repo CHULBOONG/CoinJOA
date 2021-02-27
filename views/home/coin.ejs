@@ -17,7 +17,13 @@
           //Plotly.plot('graph',json복붙,{})
           var data = "<%= data %>";
           data = data.replace(/&#34;/g,'"');
-          console.log(data)
+          // console.log(JSON.parse(data)['data']['0']['y'][2]);
+          // parsed_data = JSON.parse(data)
+          // parsed_data['data']['0']['y'][2] = 50000;
+          // console.log(JSON.parse(data)['data']['0']['y'][2]);
+
+          // console.log(typeof (Object.values(JSON.parse(data)['data']['0']['x'])));
+          // Plotly.plot('graph',parsed_datd,{});
           Plotly.plot('graph',JSON.parse(data),{});
         </script>
       </div>

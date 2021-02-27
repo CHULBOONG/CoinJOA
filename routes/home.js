@@ -27,7 +27,8 @@ router.get('/asset', function(req, res){
 
 });
 
-router.get('/google',
+
+router.get('/login/google',
   passport.authenticate('google', { scope: ['profile'] })
 );
 
