@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('../config/passport');
 var fs = require('fs');
 
+
 // Home
 router.get('/', function(req, res){
   res.render('home/welcome');
@@ -21,11 +22,6 @@ router.get('/coin', function(req, res){
 
 });
 
-
-router.get('/asset', function(req, res){
-  res.render('home/asset');
-
-});
 
 
 router.get('/login/google',

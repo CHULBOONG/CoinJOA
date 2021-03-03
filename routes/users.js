@@ -22,6 +22,16 @@ router.post('/', function(req, res){
   });
 });
 
+
+// asset
+router.get('/:username/asset', util.isLoggedin, function(req, res){
+  User.findOne({username:req.params.username}, function(err, user){
+    if(err) return res.json(err);
+    res.render('users/asset', {username:req.params.username, user:user, asset:req.params.asset});
+  });
+});
+
+
 // show
 router.get('/:username', util.isLoggedin, checkPermission, function(req, res){
   User.findOne({username:req.params.username}, function(err, user){
