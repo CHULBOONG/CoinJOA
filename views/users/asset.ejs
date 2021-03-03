@@ -5,15 +5,57 @@
   </head>
   <body>
     <%- include('../partials/nav') %>
-    
+
     <div class="container mb-3">
 
       <h2 class="mb-3">환전소</h2>
 
-      <div class="form-group row">
+      <div class="form-group">
         <label for="name" class="col-sm-3 col-form-label"><%= username %>님의 보유 자산</label>
         <div class="col-sm-9">
           <input class="form-control" type="text" id="asset" name="asset" value="<%= user.asset %>원">
+
+
+      <h2 class="mb-3">보유 코인 목록</h2>
+
+      <div class="form-group ">
+        <label for="name" class="col-sm-3 col-form-label">CTC </label>
+          <input class="form-control" type="text" id="asset" name="asset" value="<%= user.hasCTC %>개">
+
+        <label for="name" class="col-sm-3 col-form-label">MapleStory </label>
+          <input class="form-control" type="text" id="asset" name="asset" value="<%= user.hasMapleStory  %>개">
+
+        <label for="name" class="col-sm-3 col-form-label">CAU </label>
+          <input class="form-control" type="text" id="asset" name="asset" value="<%= user.hasCAU %>개">
+
+        <label for="name" class="col-sm-3 col-form-label">SKKU </label>
+          <input class="form-control" type="text" id="asset" name="asset" value="<%= user.hasSKKU %>개">
+
+          <select name="howmany">
+    <option value="">수량</option><script>
+    for(i=1;i<10;i++){
+      var number;
+      number = '<option value="many">' + i + '주</option>';
+     document.write(number);
+    }
+    </script>
+</select>
+
+<select name="whatcoin">
+    <option value="">코인선택</option>
+    <option value="Maplestory">Maplestory</option>
+    <option value="CTC">CTC</option>
+    <option value="CAU">CAU</option>
+    <option value="SKKU">SKKU</option>
+</select>
+<select name="whatdo">
+    <option value="buy">구매</option>
+    <option value="sell">판매</option>
+</select>
+
+<div class="buttons">
+  <button type="submit" class="btn btn-primary">주문</button>
+</div>
         </div>
       </div>
 

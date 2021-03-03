@@ -34,6 +34,10 @@ passport.use(new GoogleStrategy(
           //  password: /* 구글 로그인은 비번안받음 수정 필요 */ ,
            googleId: profile.id,
            asset: '1000000',
+           hasCTC: '0',
+           hasMapleStory: '0',
+           hasCAU: '0',
+           hasSKKU: '0',
            name: profile.displayName
         };
         User.create(newUser, function (err, user) {

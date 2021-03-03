@@ -26,6 +26,22 @@ var userSchema = mongoose.Schema({
     match:[/^.{0,1000000}$/,'0~100만원까지 입력 가능합니다'],
     trim:true,
   },
+   hasCTC:{
+    type:Number,
+    trim:true,
+  },
+   hasMapleStory:{
+    type:Number,
+    trim:true,
+  },
+   hasCAU:{
+    type:Number,
+    trim:true,
+  },
+   hasSKKU:{
+    type:Number,
+    trim:true,
+  },
   name:{
     type:String,
     required:[true,'Name is required!'],
