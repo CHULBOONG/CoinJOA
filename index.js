@@ -56,3 +56,15 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, function(){
   console.log('구동 완료 http://localhost:'+PORT);
 });
+
+//fix data
+const cron = require("node-cron");
+const task = cron.schedule("0 1-12 1-31 * *", () => {
+    console.log("매 시 정각마다 코인 정보가 갱신됩니다");
+    let today = new Date();   
+    console.log('Data Changed! ' + today);
+}, {
+    scheduled: false
+});
+
+task.start();
