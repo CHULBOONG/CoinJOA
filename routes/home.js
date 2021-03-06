@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('../config/passport');
 var fs = require('fs');
+const cron = require("node-cron");
 
 
 // Home
@@ -13,8 +14,17 @@ router.get('/about', function(req, res){
 });
 
 //Coin 그래프
-var text = fs.readFileSync('views/home/data.json');
-// console.log(text);
+
+var text;
+
+text = fs.readFileSync('views/home/data.json'); // 한번 읽고시작 
+
+const task = cron.schedule("*/10 * * * * *", () => { // 10초마다 업데이트
+  text = fs.readFileSync('views/home/data.json');
+});
+task.start();
+
+
 
 router.get('/coin', function(req, res){
 
