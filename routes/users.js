@@ -24,10 +24,19 @@ router.post('/', function(req, res){
 
 
 // asset
+
+var text;
+text = fs.readFileSync('views/home/data.json'); // 한번 읽고시작 
+const task = cron.schedule("0 1-12 1-31 * *", () => {
+//const task = cron.schedule("*/10 * * * * *", () => { // 10초마다 업데이트
+  text = fs.readFileSync('views/home/data.json');
+});
+task.start();
+
 router.get('/:username/asset', util.isLoggedin, function(req, res){
   User.findOne({username:req.params.username}, function(err, user){
     if(err) return res.json(err);
-    res.render('users/asset', {username:req.params.username, user:user, asset:req.params.asset});
+    res.render('users/asset', {data: text, username:req.params.username, user:user, asset:req.params.asset});
   });
 });
 

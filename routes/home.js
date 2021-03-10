@@ -18,8 +18,8 @@ router.get('/about', function(req, res){
 var text;
 
 text = fs.readFileSync('views/home/data.json'); // 한번 읽고시작 
-
-const task = cron.schedule("*/10 * * * * *", () => { // 10초마다 업데이트
+const task = cron.schedule("0 1-12 1-31 * *", () => {
+//const task = cron.schedule("*/10 * * * * *", () => { // 10초마다 업데이트
   text = fs.readFileSync('views/home/data.json');
 });
 task.start();

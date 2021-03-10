@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(flash());
 app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
+//app.locals.cdata = require('./views/home/data.json'); // 로컬변수로 선언
 
 // Passport
 app.use(passport.initialize());
@@ -64,9 +65,10 @@ var coin_num = 4;
 
 //fix data
 const cron = require("node-cron");
-// const task = cron.schedule("0 1-12 1-31 * *", () => {
-const task = cron.schedule("*/10 * * * * *", () => { // 10초마다로 일단 설정
-    console.log("매 시 정각마다 코인 정보가 갱신됩니다");
+const task = cron.schedule("0,15,30,45 1-12 1-31 * *", () => { // 15분마다 설정
+//const task = cron.schedule("0 1-12 1-31 * *", () => {
+//const task = cron.schedule("*/10 * * * * *", () => { // 10초마다로 일단 설정
+    console.log("매 시 정각부터 15분주기로 코인 정보가 갱신됩니다");
     var data = fs.readFileSync('views/home/data.json');
     var parsed_list = JSON.parse(data);
     for (let i = 0; i < coin_num; i++){
