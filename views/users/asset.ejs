@@ -42,57 +42,64 @@ ol.mylist li:hover {
       <h2 class="mb-3">환전소</h2>
 
       <div class="form-group">
-        <label for="name" class="col-sm-3 col-form-label"><%= username %>님의 보유 자산</label>
+        <label for="name" class="col-sm-3 col-form-label"><%= username %>님의 계좌 잔고</label>
         <div class="col-sm-9">
-          <input class="form-control" type="text" id="asset" name="asset" value="<%= user.asset %>원">
-
+          <input class="form-control" type="text" id="asset" name="asset" readonly value="<%= user.asset %>원">
     <ul class="mylist">
-        <li>CTC $</li>
-        <li>MapleStory $</li>
-        <li>CAU $</li>
-        <li>SKKU $</li>
+        <li>CTC$ <%= ctc %> </li>
+        <li>MapleStory $ <%= map %></li>
+        <li>CAU $ <%= cau %></li>
+        <li>SKKU $ <%= skku %></li>
     </ul>
 
       <h2 class="mb-3">보유 코인 목록</h2>
 
       <div class="form-group ">
         <label for="name" class="col-sm-3 col-form-label">CTC </label>
-          <input class="form-control" type="text" id="asset" name="asset" value="<%= user.hasCTC %>개">
+          <input class="form-control" type="text" id="asset" name="asset" readonly value="<%= user.hasCTC %>개">
 
         <label for="name" class="col-sm-3 col-form-label">MapleStory </label>
-          <input class="form-control" type="text" id="asset" name="asset" value="<%= user.hasMapleStory  %>개">
+          <input class="form-control" type="text" id="asset" name="asset" readonly value="<%= user.hasMapleStory  %>개">
 
         <label for="name" class="col-sm-3 col-form-label">CAU </label>
-          <input class="form-control" type="text" id="asset" name="asset" value="<%= user.hasCAU %>개">
+          <input class="form-control" type="text" id="asset" name="asset" readonly value="<%= user.hasCAU %>개">
 
         <label for="name" class="col-sm-3 col-form-label">SKKU </label>
-          <input class="form-control" type="text" id="asset" name="asset" value="<%= user.hasSKKU %>개">
+          <input class="form-control" type="text" id="asset" name="asset" readonly value="<%= user.hasSKKU %>개">
 
-          <select name="howmany">
-    <option value="">수량</option><script>
-    for(i=1;i<10;i++){
+          <div class="form-group">
+            <label for="name" class="col-sm-3 col-form-label"><%= username %>님의 순 자산</label>
+            <div class="col-sm-9">
+              <input class="form-control" type="text" id="asset" name="asset" readonly value=" <%= user.asset +  ctc  *  user.hasCTC  +  map  *  user.hasMapleStory +  cau  *  user.hasCAU  +  skku  *  user.hasSKKU %>   원 ">
+
+             
+
+
+<form action="/users/<%= username %>/assetupdate?_method=put" method="post">
+<select name="howmany" id="howmany">
+    <script>
+    for(i=1;i<101;i++){
       var number;
-      number = '<option value="many">' + i + '주</option>';
+      number = '<option value="' + i +'">' + i + '주</option>';
      document.write(number);
     }
     </script>
 </select>
-
-<select name="whatcoin">
-    <option value="">코인선택</option>
-    <option value="Maplestory">Maplestory</option>
-    <option value="CTC">CTC</option>
-    <option value="CAU">CAU</option>
-    <option value="SKKU">SKKU</option>
+<select name="whatcoin" id="whatcoin">
+    <!-- <option value="">코인선택</option> -->
+    <option value="Maplestory <%=map%>">Maplestory</option>
+    <option value="CTC <%=ctc%>">CTC</option>
+    <option value="CAU <%=cau%>">CAU</option>
+    <option value="SKKU <%=skku%>">SKKU</option>
 </select>
-<select name="whatdo">
+<select name="whatdo" id="whatdo">
     <option value="buy">구매</option>
     <option value="sell">판매</option>
 </select>
-
 <div class="buttons">
-  <button type="submit" class="btn btn-primary">주문</button>
+  <button type="submit"  class="btn btn-primary" >주문</button>
 </div>
+</form>
         </div>
       </div>
 

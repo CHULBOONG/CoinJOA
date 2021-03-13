@@ -32,7 +32,6 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(flash());
 app.use(session({secret:'MySecret', resave:true, saveUninitialized:true}));
-//app.locals.cdata = require('./views/home/data.json'); // 로컬변수로 선언
 
 // Passport
 app.use(passport.initialize());
