@@ -97,7 +97,7 @@ if ( req.body.whatdo == "sell"){
      console.log("CTC코인이 부족하여 진행되지 않았습니다!");
     }
     else{
-  user.hasCTC -=  parseInt(req.body.howmany); //구매한 만큼 차감
+  user.hasCTC -=  parseInt(req.body.howmany); //판매한 만큼 차감
   user.asset += parseInt(req.body.howmany)*parseInt(coin_value); // 갯수*가격 만큼 자산에 추가
     }
   }
@@ -106,7 +106,7 @@ if ( req.body.whatdo == "sell"){
      console.log("Maplestory코인이 부족하여 진행되지 않았습니다!");
     }
     else{
-  user.hasMapleStory -=  parseInt(req.body.howmany); //구매한 만큼 차감
+  user.hasMapleStory -=  parseInt(req.body.howmany); //판매한 만큼 차감
   user.asset += parseInt(req.body.howmany)*parseInt(coin_value); // 갯수*가격 만큼 자산에 추가됨
     }
   }
@@ -115,7 +115,7 @@ if ( req.body.whatdo == "sell"){
      console.log("CAU코인이 부족하여 진행되지 않았습니다!");
     }
     else{
-  user.hasCAU -=  parseInt(req.body.howmany); //구매한 만큼 차감
+  user.hasCAU -=  parseInt(req.body.howmany); //판매한 만큼 차감
   user.asset += parseInt(req.body.howmany)*parseInt(coin_value); // 갯수*가격 만큼 자산에 추가됨
     }
 
@@ -125,7 +125,7 @@ if ( req.body.whatdo == "sell"){
      console.log("SKKU코인이 부족하여 진행되지 않았습니다!");
     }
     else{
-  user.hasSKKU -=  parseInt(req.body.howmany); //구매한 만큼 차감
+  user.hasSKKU -=  parseInt(req.body.howmany); //판매한 만큼 차감
   user.asset += parseInt(req.body.howmany)*parseInt(coin_value); // 갯수*가격 만큼 자산에 추가됨
     }
 
