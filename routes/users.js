@@ -25,6 +25,14 @@ router.post('/', function(req, res){
   });
 });
 
+function functionToGetData(){
+  data = JSON.parse(data);
+  var y_length = (data['data'][0]['y'].length)-1;
+  var ctc_y = data['data'][0]['y'][y_length].toFixed(2);
+  var map_y = data['data'][3]['y'][y_length].toFixed(2);
+  var cau_y = data['data'][2]['y'][y_length].toFixed(2);
+  var skku_y = data['data'][1]['y'][y_length].toFixed(2);
+  }
 
 // asset
 
@@ -32,6 +40,7 @@ var data;
 data = fs.readFileSync('views/home/data.json'); // 한번 읽고시작
 const task = cron.schedule("*/10 * * * * *", () => { // 10초마다 업데이트
   data = fs.readFileSync('views/home/data.json');
+  functionToGetData();
 });
 task.start();
 
